@@ -538,7 +538,7 @@ with tab5:
                 st.dataframe(predict_revol)
                 st.dataframe(predict_credit)
                 st.dataframe(predict_loan)
-             with col2:
+            with col2:
                 predict_data_preprocessed = model[:4].transform(predict_data)
                 try:
                     shap_value = shap.TreeExplainer(model[-1], feature_perturbation="tree_path_dependent").shap_values(predict_data_preprocessed)[1]
