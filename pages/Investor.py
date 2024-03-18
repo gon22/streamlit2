@@ -538,13 +538,11 @@ with tab5:
                 st.dataframe(predict_revol)
                 st.dataframe(predict_credit)
                 st.dataframe(predict_loan)
-            with col2:
+             with col2:
                 predict_data_preprocessed = model[:4].transform(predict_data)
-                shap_value = shap.TreeExplainer(model[-1], feature_perturbation="tree_path_dependent").shap_values(predict_data_preprocessed)[0]
                 try:
+                    shap_value = shap.TreeExplainer(model[-1], feature_perturbation="tree_path_dependent").shap_values(predict_data_preprocessed)[1]
                     st_shap(shap.waterfall_plot(shap.Explanation(values=shap_value[0], base_values=0.5, data=predict_data_preprocessed.values[0], feature_names=predict_data_preprocessed.columns.tolist())), height=500, width=900)
                 except:
-                    st.dataframe(predict_prevacy)
-                    st.dataframe(predict_revol)
-                    st.dataframe(predict_credit)
-                    st.dataframe(predict_loan)
+                    shap_value = shap.TreeExplainer(model[-1], feature_perturbation="tree_path_dependent").shap_values(predict_data_preprocessed)[0]
+                    st_shap(shap.waterfall_plot(shap.Explanation(values=shap_value[0], base_values=0.5, data=predict_data_preprocessed.values[0], feature_names=predict_data_preprocessed.columns.tolist())), height=500, width=900)
