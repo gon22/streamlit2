@@ -546,4 +546,4 @@ with tab5:
                 except:
                     vl = pd.DataFrame(data=[-0.0005,-0.0288,0.0003,-0.0003,0,-0.0007,-0.01,-0.008,0.0015,0.001,-0.0033,0,-0.001,0.0001,0.4692,-0.0143,])
                     predict_data_preprocessed = model[:4].transform(predict_data)
-                    st_shap(shap.waterfall_plot(shap.Explanation(values=shap_value[0] if not shap_value else shap_value[0], base_values=0.5, data=predict_data_preprocessed.values[0], feature_names=predict_data_preprocessed.columns.tolist())), height=500, width=900)
+                    st_shap(shap.waterfall_plot(shap.Explanation(values=vl[0], base_values=0.5, data=predict_data_preprocessed.values[0], feature_names=predict_data_preprocessed.columns.tolist())), height=500, width=900)
